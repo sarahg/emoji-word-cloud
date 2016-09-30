@@ -4,11 +4,12 @@ import json
 
 script, input_file = argv
 
-# How many different sizes should be shown in the word cloud?
-cloud_levels = 5
 
-""" Check if a character is an emoji. """
+max_font_size = 200
+
+
 def is_emoji(s):
+    """ Check if a character is an emoji. """
     count = 0
     for emoji in UNICODE_EMOJI:
         count += s.count(emoji)
@@ -16,38 +17,36 @@ def is_emoji(s):
             return False
     return bool(count)
 
-""" Set emoji weights for the word cloud. """
-#def set_emoji_weights(emojis):
-    # Get the total emoji count.
-    # Separate items equal groups, based on size.
-    # Algoritm is based on http://stackoverflow.com/a/1478314.
 
-    # var words = [
-    #   {text: ":beers:", weight: 13},
-    #   {text: ":see-no-evil-monkey:", weight: 10.5},
-    # ]
-    
-    #return cloud
+def get_emoji_weight(count, highest_count):
+    """ Assign a font sized proportional to total occurances. """
+    font_size = (count * max_font_size) / highest_count
+    return int(font_size)
+
 
 # Read the given text file.
 text = open(input_file).read()
 
-# Create a list of the unique characters.
+
+# Get a count of each unique emoji.
 unique_characters = list(set(text))
-
-# Count how many occurances of each emoji are in the file.
-emoji_counts = {}
+emojis = []
+ 
 for character in unique_characters:
-    if is_emoji(character): 
-        emoji_counts[character] = text.count(character)
+    if is_emoji(character):
+        emoji = {'character': character, 'count': text.count(character)}
+        emojis.append(emoji)
 
-print (emoji_counts)
+
+# Get the most frequent emoji.
+top_emoji = max(emojis, key=lambda x:x['count'])
+
 
 # Set weights.
-#weighted_cloud = set_emoji_weights(emoji_counts)
-#print (weighted_cloud)
-        
+for emoji in emojis:
+    emoji['weight'] = get_emoji_weight(emoji['count'], top_emoji['count'])
+    
 
-# Prints a JSON object of JavaScript-escaped emojis with their counts
-# print (json.dumps(emoji_counts))
 
+# Print a JSON object containing emojis, weights and counts.
+print (json.dumps(emojis))
