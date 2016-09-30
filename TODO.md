@@ -5,3 +5,4 @@
 - Write some JS to create markup from the data.
 - Hook up some sort of jQuery plugin to render the word cloud.
 - Figure out how to structure/package the project properly.
+- Add an option to handle Slack-style emoji, like :dancer:
