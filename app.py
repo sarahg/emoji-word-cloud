@@ -7,7 +7,7 @@ app = Flask(__name__)
 def wordIn():
     return render_template('wordCloud.html')
 
-@app.route('wordUp', methods=['POST'])
+@app.route('/wordUp', methods=['POST'])
 def wordUp():
     text = request.form['emoji']
     emojis = emoji_word_cloud.EmojiCloud(text)
