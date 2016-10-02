@@ -8,8 +8,10 @@ class EmojiCloud(text):
 
     def __init__(text):
 
+        self.text = text
+
         # Get a count of each unique emoji.
-        unique_characters = list(set(text))
+        unique_characters = list(set(self.text))
         emojis = [] 
         for character in unique_characters:
             if is_emoji(character):
