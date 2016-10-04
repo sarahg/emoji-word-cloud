@@ -1,5 +1,6 @@
-from flask import Flask, render_template
-import emoji_word_cloud
+from flask import Flask, request, render_template
+from emoji_word_cloud.emoji_word_cloud import EmojiCloud
+import json
 
 app = Flask(__name__)
 
