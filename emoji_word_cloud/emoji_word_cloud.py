@@ -4,18 +4,20 @@ from emoji import UNICODE_EMOJI
 MAX_FONT_SIZE = 200
 
 
-class EmojiCloud(text):
+class EmojiCloud(object):
 
-    def __init__(text):
+    def __init__(self, text):
 
         self.text = text
 
+
+    def buildCloud(self):
         # Get a count of each unique emoji.
         unique_characters = list(set(self.text))
         emojis = [] 
         for character in unique_characters:
-            if is_emoji(character):
-                emoji = {'character': character, 'count': text.count(character)}
+            if self.is_emoji(character):
+                emoji = {'character': character, 'count': self.text.count(character)}
                 emojis.append(emoji)
 
 
@@ -25,12 +27,12 @@ class EmojiCloud(text):
 
         # Set weights.
         for emoji in emojis:
-            emoji['weight'] = get_emoji_weight(emoji['count'], top_emoji['count'])
+            emoji['weight'] = self.get_emoji_weight(emoji['count'], top_emoji['count'])
 
         return emojis
 
 
-    def is_emoji(s):
+    def is_emoji(self, s):
         """ Check if a character is an emoji. """
         count = 0
         for emoji in UNICODE_EMOJI:
@@ -40,7 +42,7 @@ class EmojiCloud(text):
         return bool(count)
 
 
-    def get_emoji_weight(count, highest_count):
+    def get_emoji_weight(self, count, highest_count):
         """ Assign a font sized proportional to total occurances. """
         font_size = (count * MAX_FONT_SIZE) / highest_count
         return int(font_size)
