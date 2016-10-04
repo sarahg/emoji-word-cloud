@@ -2,7 +2,7 @@ $(document).foundation()
 
 $(document).ready(function() {
   $('button').click(function() {
-    var text = $('#emoji').val();
+    var text = $('#emoji textarea').val();
 
     $.ajax({
       url: '/wordUp',
