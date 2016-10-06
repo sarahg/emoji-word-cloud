@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SG | Emoji word cloud</title>
     <link rel="stylesheet" href="static/css/foundation.css">
+    <link rel="stylesheet" href="static/bower_components/jqcloud2/dist/jqcloud.min.css">
     <link rel="stylesheet" href="static/css/app.css">
   </head>
   <body>
@@ -21,17 +22,23 @@
 
     <div class="row">
       <div class="large-12 columns">
+
         <form id="emoji" action="/wordUp" method="post" role="form">
               <label>Paste text below</label>
              <textarea name="emoji" rows="10" cols="50" placeholder="Paste text here"></textarea> 
              <button class="button radius success" type="button">Create word cloud</button>
          </form>
+
+        <div id="cloud"></div>
+
       </div>
     </div>
 
     <script src="static/js/vendor/jquery.js"></script>
     <script src="static/js/vendor/what-input.js"></script>
     <script src="static/js/vendor/foundation.js"></script>
+    <script src="static/bower_components/jqcloud2/dist/jqcloud.min.js"></script>
     <script src="static/js/app.js"></script>
+
   </body>
 </html>

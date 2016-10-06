@@ -12,18 +12,18 @@ class EmojiCloud(object):
 
 
     def buildCloud(self):
+        """ Gets weights of unique emoji characters in a string """
         # Get a count of each unique emoji.
         unique_characters = list(set(self.text))
         emojis = [] 
         for character in unique_characters:
             if self.is_emoji(character):
-                emoji = {'character': character, 'count': self.text.count(character)}
+                emoji = {'text': character, 'count': self.text.count(character)}
                 emojis.append(emoji)
 
-
         # Get the most frequent emoji.
+        # We need this to set relative weights.
         top_emoji = max(emojis, key=lambda x:x['count'])
-
 
         # Set weights.
         for emoji in emojis:
