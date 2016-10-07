@@ -4,3 +4,8 @@ body {
 form label {
   display: none;
 }
+
+#cloud {
+  height: 600px;
+  width: 80%;
+}
