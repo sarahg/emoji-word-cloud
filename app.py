@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 from emoji_word_cloud.emoji_word_cloud import EmojiCloud
 import json
+import os
 
 app = Flask(__name__)
 
@@ -24,5 +25,5 @@ def wordUp():
     return json.dumps({'status':'OK','weighted_emojis':weighted})
 
 if __name__ == "__main__":
-
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
