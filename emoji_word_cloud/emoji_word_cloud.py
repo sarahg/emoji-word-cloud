@@ -1,7 +1,7 @@
 from emoji import UNICODE_EMOJI
 
 
-MAX_FONT_SIZE = 200
+MAX_FONT_SIZE = 700
 
 
 class EmojiCloud(object):
